@@ -27,25 +27,6 @@ int *read_file_to_memory(const char *file_name, size_t file_size) {
     return file;
 }
 
-// Функция для инициализации массива
-void create_file(size_t len, const int upper_bound) {
-    // Создаем бинарник для записи элементов массива
-    FILE *output = NULL;
-    output = fopen("../data.bin", "wb");
-    // Элемент массива
-    int number;
-    // Сохраняем случайность для последовательного и параллельного запуска
-    srand(time(NULL));
-    // Генерируем случайные числа и записываем в файл
-    for (size_t i = 0; i < len; i++) {
-        number = rand() % upper_bound;
-        fwrite(&number, sizeof(int), 1, output);
-    }
-    // Перемещает указатель в начало файла
-    fseek(output, 0, SEEK_SET);
-    // Закрываем файл
-    fclose(output);
-}
 
 // Функция для вычисления суммы элементов массива
 void direct_sum_calculation(int64_t *result, const int *array, size_t len) {
@@ -63,7 +44,7 @@ void parrallel_sum_calculation(const int *array, size_t num_cores,
     // Процесс, на котором будем проводить вычисления
     size_t current_proc = 0;
     // Размер массива для одного процессаDEFAULT_LEN
-    size_t size_one_proc = (size_t) (len / num_cores);    // Считаем сумму
+    size_t size_one_proc = len / num_cores;
     // Уникальный process ID
     int pid;
     // Результат суммирования на каждом процессе

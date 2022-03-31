@@ -10,9 +10,6 @@
 #define DEFAULT_LEN 100000000
 #define DEFAULT_UP_BOUND 10
 
-// Функция для инициализации массива
-void create_file(size_t len, int upper_bound);
-
 // Функция записи файла в память
 int *read_file_to_memory(const char *file_name, size_t file_size);
 
