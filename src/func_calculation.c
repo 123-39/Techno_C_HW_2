@@ -22,6 +22,9 @@ int *read_file_to_memory(const char *file_name, size_t file_size) {
     // Отображаем файл в память
     int *file = mmap(NULL, file_size * sizeof(int),
                      PROT_READ, MAP_FILE | MAP_SHARED, df, 0);
+    if (file == MAP_FAILED) {
+        return NULL;
+    }
     // Закрываем файл
     fclose(ptrFile);
     return file;
