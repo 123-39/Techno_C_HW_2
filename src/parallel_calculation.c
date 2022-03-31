@@ -23,7 +23,7 @@ int64_t calculate_sum(int *file, size_t len) {
     // Ждем закрытия всех дочерних процессов
     if (getpid() != init_pid) {
         while (wait(NULL) > 0) {}
-        exit(0);
+        exit(EXIT_SUCCESS);
     }
     while (wait(NULL) > 0) {}
     // Очищаем память
