@@ -58,13 +58,6 @@ TEST(DIRECT_TEST, SUCCESS_DIRECT) {
     EXPECT_EQ(test_result, TEST_SIZE);
 }
 
-TEST(DIRECT_TEST, SUCCESS_DIRECT) {
-    size_t test_arr_size = 1000;
-    int *test_arr = read_file_to_memory("data_test.bin", test_arr_size);
-    int64_t test_result = calculate_sum(test_arr, test_arr_size);
-    EXPECT_EQ(test_result, 1000);
-}
-
 
 int main(int argc, char *argv[]) {
     ::testing::InitGoogleTest(&argc, argv);
