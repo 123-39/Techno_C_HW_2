@@ -11,7 +11,7 @@ int64_t calculate_sum(int *file, size_t len) {
     // Считаем
     direct_sum_calculation(&result_direct, file, len);
     // Очищаем память
-    clear_mem(file, DEFAULT_LEN * sizeof(int));
+    clear_mem(file, len * sizeof(int));
     return result_direct;
 }
 

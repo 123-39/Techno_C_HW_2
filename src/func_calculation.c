@@ -1,11 +1,12 @@
 //
 // All functions for calculations and work with files
 //
+
 #include "func_calculation.h"
-#include <stdlib.h>
-#include <unistd.h>
+#include <stdio.h>
 #include <sys/mman.h>
 #include <time.h>
+#include <unistd.h>
 
 // Функция записи файла в память
 int *read_file_to_memory(const char *file_name, size_t file_size) {
@@ -19,7 +20,8 @@ int *read_file_to_memory(const char *file_name, size_t file_size) {
     // Получаем дескриптор файла
     int df = fileno(ptrFile);
     // Отображаем файл в память
-    int *file = mmap(NULL, file_size * sizeof(int), PROT_READ, MAP_FILE | MAP_SHARED, df, 0);
+    int *file = mmap(NULL, file_size * sizeof(int),
+                     PROT_READ, MAP_FILE | MAP_SHARED, df, 0);
     // Закрываем файл
     fclose(ptrFile);
     return file;
@@ -56,7 +58,8 @@ void direct_sum_calculation(int64_t *result, const int *array, size_t len) {
 }
 
 // Функция для параллельного вычисления суммы элементов массива
-void parrallel_sum_calculation(const int *array, size_t num_cores, int64_t *shareable_var, size_t len) {
+void parrallel_sum_calculation(const int *array, size_t num_cores,
+                               int64_t *shareable_var, size_t len) {
     // Процесс, на котором будем проводить вычисления
     size_t current_proc = 0;
     // Размер массива для одного процессаDEFAULT_LEN
@@ -65,7 +68,8 @@ void parrallel_sum_calculation(const int *array, size_t num_cores, int64_t *shar
     int pid;
     // Результат суммирования на каждом процессе
     int64_t result = 0;
-    for (const int *short_arr = array; current_proc < num_cores; ++current_proc, short_arr += size_one_proc) {
+    for (const int *short_arr = array; current_proc < num_cores;
+    ++current_proc, short_arr += size_one_proc) {
         // Распараллеливаем
         pid = fork();
         // Для дочернего класса выполняем
