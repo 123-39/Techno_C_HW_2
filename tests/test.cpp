@@ -11,7 +11,7 @@ extern "C" {
 }
 
 #define TEST_SIZE 1000
-#define TEST_PATH "../tests/data_test.bin"
+#define TEST_PATH "tests/data_test.bin"
 
 TEST(MMAP_TEST, SUCCESS_READ) {
     size_t test_arr_size = TEST_SIZE;
