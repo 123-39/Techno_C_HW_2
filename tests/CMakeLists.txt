@@ -1,12 +1,3 @@
-# Минимальная версия для запуска
-cmake_minimum_required(VERSION 3.16)
-
-# Имя проекта
-project(tests)
-
-# Стандарт языка
-set(CMAKE_CXX_STANDARD 14)
-
 # Пакет без которого все крашится
 find_package (Threads REQUIRED)
 

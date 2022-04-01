@@ -1,12 +1,3 @@
-# Минимальная версия для запуска
-cmake_minimum_required(VERSION 3.16)
-
-# Имя проекта
-project(Home_work_2)
-
-# стандарт языка
-set(CMAKE_CXX_STANDARD 14)
-
 # Пакет без которого все крашится
 find_package (Threads REQUIRED)
 add_compile_options(-pthread)

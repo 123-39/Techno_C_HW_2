@@ -14,7 +14,7 @@ int *read_file_to_memory(const char *file_name, size_t file_size) {
     FILE *ptrFile = NULL;
     ptrFile = fopen(file_name, "rb");
     // Проверка открытия файла
-    if (ptrFile == NULL) {
+    if (!ptrFile) {
         return NULL;
     }
     // Получаем дескриптор файла
@@ -31,7 +31,7 @@ int *read_file_to_memory(const char *file_name, size_t file_size) {
 }
 
 
-// Функция для вычисления суммы элементов массива
+// Вспомогательная функция для вычисления суммы элементов массива
 void direct_sum_calculation(int64_t *result, const int *array, size_t len) {
     *result = 0;
     for (size_t k = 0; k < 10 && k < len; ++k) {
@@ -41,7 +41,7 @@ void direct_sum_calculation(int64_t *result, const int *array, size_t len) {
     }
 }
 
-// Функция для параллельного вычисления суммы элементов массива
+// Вспомогательная функция для параллельного вычисления суммы элементов массива
 void parrallel_sum_calculation(const int *array, size_t num_cores,
                                int64_t *shareable_var, size_t len) {
     // Процесс, на котором будем проводить вычисления

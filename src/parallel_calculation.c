@@ -26,8 +26,6 @@ int64_t calculate_sum(int *file, size_t len) {
         exit(EXIT_SUCCESS);
     }
     while (wait(NULL) > 0) {}
-    // Очищаем память
-    clear_mem(file, len * sizeof(int));
     // Выводим результат
     return *result_parallel;
 }
