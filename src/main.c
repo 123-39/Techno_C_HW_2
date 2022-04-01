@@ -30,7 +30,8 @@ int main() {
 
     // Считаем затраченное время
     double time_spent = ((double)(finish.tv_sec - start.tv_sec) +
-            (double)(finish.tv_nsec - start.tv_nsec) / NANO_SEC_CONVERT) / LAUNCH_COUNT;
+            (double)(finish.tv_nsec - start.tv_nsec) / NANO_SEC_CONVERT)
+                    / LAUNCH_COUNT;
     // Очищаем память
     clear_mem(array, DEFAULT_LEN * sizeof(int));
     printf("Result: %li\n", result);
