@@ -5,10 +5,12 @@
 #ifndef INCLUDE_FUNC_CALCULATION_H_
 #define INCLUDE_FUNC_CALCULATION_H_
 
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/mman.h>
 #include <stdlib.h>
 
 #define DEFAULT_LEN 100000000
-#define DEFAULT_UP_BOUND 10
 
 // Функция записи файла в память
 int *read_file_to_memory(const char *file_name, size_t file_size);
@@ -20,7 +22,7 @@ void direct_sum_calculation(int64_t *result, const int *array, size_t len);
 void parrallel_sum_calculation(const int *array, size_t num_cores,
                                int64_t *shareable_var, size_t len);
 
-// Параллельный подсчет суммы
+// Результат суммирования (одинаковый заголовок для обоих реализаций)
 int64_t calculate_sum(int *file, size_t len);
 
 // Функция очистки памяти

@@ -20,21 +20,23 @@ int main() {
     // ==========================Реализация ======================== //
     struct timespec start, finish;
     int64_t result = 0;
+    double time_spent = 0;
 
-    clock_gettime(CLOCK_MONOTONIC, &start);
     for (int i = 0; i < LAUNCH_COUNT; ++i) {
+        clock_gettime(CLOCK_MONOTONIC, &start);
         // Результат суммирования (одинаковый заголовок для обоих реализаций)
         result = calculate_sum(array, DEFAULT_LEN);
+        clock_gettime(CLOCK_MONOTONIC, &finish);
+        // Считаем затраченное время
+        time_spent += (double)(finish.tv_sec - start.tv_sec) +
+                             (double)(finish.tv_nsec - start.tv_nsec)
+                             / NANO_SEC_CONVERT;
     }
-    clock_gettime(CLOCK_MONOTONIC, &finish);
 
-    // Считаем затраченное время
-    double time_spent = ((double)(finish.tv_sec - start.tv_sec) +
-            (double)(finish.tv_nsec - start.tv_nsec) / NANO_SEC_CONVERT)
-                    / LAUNCH_COUNT;
     // Очищаем память
     clear_mem(array, DEFAULT_LEN * sizeof(int));
+
     printf("Result: %li\n", result);
-    printf("Time: %lf с\n", time_spent);
+    printf("Time: %lf с\n", time_spent / LAUNCH_COUNT);
     return 0;
 }

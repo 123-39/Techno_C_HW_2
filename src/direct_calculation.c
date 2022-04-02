@@ -2,7 +2,6 @@
 // Direct calculation of the sum of array elements
 //
 
-#include <sys/mman.h>
 #include "func_calculation.h"
 
 // Прямой подсчет суммы

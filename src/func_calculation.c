@@ -4,9 +4,6 @@
 
 #include "func_calculation.h"
 #include <stdio.h>
-#include <sys/mman.h>
-#include <time.h>
-#include <unistd.h>
 
 // Функция записи файла в память
 int *read_file_to_memory(const char *file_name, size_t file_size) {
@@ -22,11 +19,11 @@ int *read_file_to_memory(const char *file_name, size_t file_size) {
     // Отображаем файл в память
     int *file = mmap(NULL, file_size * sizeof(int),
                      PROT_READ, MAP_FILE | MAP_SHARED, df, 0);
+    // Закрываем файл
+    fclose(ptrFile);
     if (file == MAP_FAILED) {
         return NULL;
     }
-    // Закрываем файл
-    fclose(ptrFile);
     return file;
 }
 

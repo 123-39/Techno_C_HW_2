@@ -2,9 +2,6 @@
 // Parallel calculation of the sum of array elements
 //
 
-#include <unistd.h>
-#include <sys/wait.h>
-#include <sys/mman.h>
 #include "func_calculation.h"
 
 // Параллельный подсчет суммы
